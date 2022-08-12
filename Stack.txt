@@ -1,0 +1,32 @@
+// Stack Example
+
+#include <stack>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   	stack<int*> myStack;
+
+	myStack.push( new int(10) );
+	myStack.push( new int(20) );
+	myStack.push( new int(30) );
+	myStack.push( new int(40) );
+
+
+	int size = myStack.size();
+
+	cout << myStack.size() << endl;
+
+	while(!myStack.empty()){
+
+		cout << myStack.top() << " ";  // What is wrong? How can we fix it?
+		cout<<endl;
+
+		delete myStack.top();  //release memory to which it points
+		myStack.pop();
+
+	}
+
+	return(0);
+}

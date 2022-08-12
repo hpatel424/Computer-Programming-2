@@ -1,0 +1,32 @@
+// Queue Example
+
+#include <queue>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	queue<int*> myQueue;
+
+	myQueue.push( new int(10) );
+	myQueue.push( new int(20) );
+	myQueue.push( new int(30) );
+	myQueue.push( new int(40) );
+
+
+	int size = myQueue.size();
+
+	cout << size << endl;
+
+	while( !myQueue.empty() ){
+
+		cout << *myQueue.front() << " ";  
+		cout<<endl;
+
+		delete myQueue.front();  //release memory to which it points
+		myQueue.pop();
+
+	}
+
+	return(0);
+}

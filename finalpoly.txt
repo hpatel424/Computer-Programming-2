@@ -1,0 +1,139 @@
+
+
+//Harry Patel
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class Button {
+public:
+	virtual void print(void) = 0;
+	virtual int numberOfTimeClicked() = 0;
+	//virtual int rightCounter() = 0;
+};
+
+class Left :public Button {
+	int counter = 0;
+public:
+	void print(void);
+	int numberOfTimeClicked();
+};
+class L1 :public Left {
+	int counter = 0;
+public:
+	void print(void);
+	int numberOfTimeClicked();
+};
+class L2 : public Left {
+	int counter = 0;
+public:
+	void print(void);
+	int numberOfTimeClicked();
+};
+
+class Right : public Button {
+	int counter = 0;
+public:
+	void print(void);
+	int numberOfTimeClicked();
+};
+class R1 :public Right {
+	int counter = 0;
+public:
+	void print(void);
+	int numberOfTimeClicked();
+};
+class R2 :public Right {
+	int counter = 0;
+public:
+	void print(void);
+	int numberOfTimeClicked();
+};
+
+
+int main() {
+
+	vector<Button*> btnPtr;
+
+	//button.push_back(new Left());
+	btnPtr.push_back(new L1());
+	btnPtr.push_back(new L2());
+	//button.push_back(new Right());
+	btnPtr.push_back(new R1());
+	btnPtr.push_back(new R2());
+	
+	
+	for (int i = 0; i < btnPtr.size(); i++) {
+		cout << "btnPtr " << i + 1 << ": " << typeid(*btnPtr[i]).name() << endl;
+		//Polymorphism here
+		btnPtr[i]->print();
+		btnPtr[i]->numberOfTimeClicked();
+		
+		cout << endl;
+	}
+	
+	//Memory Management
+
+	while (!btnPtr.empty()) {
+		delete btnPtr.back(); //deallocate memory
+		btnPtr.pop_back(); // pop address off vector
+	}
+
+	system("pause");
+	return 0;
+}
+
+void Left::print(void) {
+	cout << "Left Button Pressed" << endl;
+	cout << "Number of times Clicked " << Left::numberOfTimeClicked() << endl;
+}
+
+void L1::print(void) {
+	cout << "L1 Button Pressed" << endl;
+	cout << "Number of times Clicked " << L1::numberOfTimeClicked() << endl;
+}
+void L2::print(void) {
+	cout << "L2 Button Pressed" << endl;
+	cout << "Number of times Clicked " << L2::numberOfTimeClicked() << endl;
+}
+
+void Right::print(void) {
+	cout << "Right Button Inside" << endl;
+	cout << "Number of times Clicked " << Right::numberOfTimeClicked() << endl;
+}
+
+void R1::print(void) {
+	cout << "R1 Button Pressed" << endl;
+	cout << "Number of times Clicked " << R1::numberOfTimeClicked() << endl;
+}
+void R2::print(void) {
+	cout << "R2 Button Pressed" << endl;
+	cout << "Number of times Clicked " << R2::numberOfTimeClicked() << endl;
+}
+
+int Left::numberOfTimeClicked() {
+	counter = counter + 1;
+	return counter;
+}
+int L1::numberOfTimeClicked() {
+	counter = counter + 1;
+	return counter;
+}
+int L2::numberOfTimeClicked() {
+	counter = counter + 1;
+	return counter;
+}
+int Right::numberOfTimeClicked() {
+	counter = counter + 1;
+	return counter;
+}
+int R1::numberOfTimeClicked() {
+	counter = counter + 1;
+	return counter;
+}
+int R2::numberOfTimeClicked() {
+	counter = counter + 1;
+	return counter;
+}

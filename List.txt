@@ -1,0 +1,59 @@
+// grocery list
+
+#include <iostream>
+#include <string>
+#include <list>
+using namespace std;
+
+void outputList(list<string> &passedList );
+
+int main(void){
+		
+	int i = 0;
+	string x = "apples";
+	list<string> groceryList;
+
+	groceryList.push_front(x);
+
+	cout << groceryList.front() << endl;
+
+	cout << "**************************************" << endl;
+
+	list<string>::iterator itr;		// string list iterator
+	itr = groceryList.begin();		// set iterator to first list element
+
+	groceryList.insert(itr, "bread");
+
+	
+	itr = groceryList.begin();
+	while( itr != groceryList.end() ){
+		cout << *itr << " ";
+		itr++;
+	}
+	cout<< endl;
+
+	cout << "**************************************" << endl;
+
+	itr--;
+	groceryList.insert(itr, "juice");
+	outputList(groceryList);
+
+	groceryList.sort();
+	outputList(groceryList);
+
+
+	return(0);
+}
+
+
+
+void outputList(list<string> &passedList ){
+
+	list<string>::iterator i;
+	i = passedList.begin();
+	while( i != passedList.end() ){
+		cout << *i << " ";
+		i++;
+	}
+	cout<< endl;
+}

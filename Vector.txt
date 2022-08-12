@@ -1,0 +1,42 @@
+// Vector Example with Iterators
+
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   vector<int> myVector;
+
+   // Populate the vector:  insert elements from -3 to 9
+   for (int i=-3; i<=9; i++) {
+       myVector.push_back(i);
+   }
+
+   /* print number of elements by processing the distance between beginning and end
+    * - NOTE: uses operator - for iterators  */
+   cout << "number of elements/Distance in this case: " << myVector.end() - myVector.begin() << endl;
+
+   /* print all elements
+    * - NOTE: uses operator < instead of operator !=  */
+   vector<int>::iterator pos;
+
+   for (pos = myVector.begin(); pos < myVector.end(); pos++) {
+       cout << *pos << ' ';  // dereference iterators just like pointers
+   }
+   cout << endl;
+
+   /* print all elements
+    * - NOTE: uses operator [] instead of the dereferencing operator (*) */ 
+   for (int i=0; i<myVector.size(); i++) {
+       cout << myVector.begin()[i] << ' ';
+   }
+   cout << endl;
+
+   /* print every second element
+    * - NOTE: uses operator +=  iterator arithmetic */
+   for (pos = myVector.begin(); pos < myVector.end()-1; pos += 2) {
+       cout << *pos << ' ';
+   }
+   cout << endl;
+}
